@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
-require( "config" )
+require( "globals" )
 require( "core" )
-require( "snippet" )
 
 
 

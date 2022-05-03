@@ -1,22 +1,11 @@
 local kop = { noremap = true, silent = true };
 
---[[
-#------------------------------------------------------------------------------#
-#                                    CONFIG                                    #
-#------------------------------------------------------------------------------#
---]]
 -- reload nvim configuration file
 vim.api.nvim_set_keymap('n', ',r', ':luafile $MYVIMRC<cr>', {})
 
 -- edit nvim configuration file
 vim.api.nvim_set_keymap('n', ',e', ':vsp $MYVIMRC<cr>', {})
 
-
---[[
-#------------------------------------------------------------------------------#
-#                                  CURSOR MOVE                                 #
-#------------------------------------------------------------------------------#
---]]
 vim.api.nvim_set_keymap('n', '<leader>wh', '<c-w>h', {})
 vim.api.nvim_set_keymap('n', '<leader>wl', '<c-w>l', {})
 vim.api.nvim_set_keymap('n', '<leader>wj', '<c-w>j', {})
@@ -25,35 +14,9 @@ vim.api.nvim_set_keymap('n', '<leader>wk', '<c-w>k', {})
 vim.api.nvim_set_keymap('n', '<leader>wp', ':vertical resize +3<cr>', kop)
 vim.api.nvim_set_keymap('n', '<leader>wm', ':vertical resize -3<cr>', kop)
 
---[[
-#------------------------------------------------------------------------------#
-#                               BUFFER READ WRITE                              #
-#------------------------------------------------------------------------------#
---]]
--- [ ctrl + s ] save the current buffer
 vim.api.nvim_set_keymap('n', '<c-s>', ':w<cr>', {})
-
--- [ ctrl + q ] quite the current buffer
 vim.api.nvim_set_keymap('n', '<c-q>', ':bd<cr>', {})
 
-
---[[ #------------------------------------------------------------------------------#
-#                                COPY PASTE                                #
-#------------------------------------------------------------------------------#
---]]
--- [ Y ] copy until the end of the line
-vim.api.nvim_set_keymap('n', 'Y', 'y$', {})
-
--- [ ctrl + y ] copy current line and paste next line
-vim.api.nvim_set_keymap('n', '<c-y>', 'yyp', {})
-
-
-
---[[
-#--------------------------------------------------------------------------------#
-#                          INDENTATION                                           #
-#--------------------------------------------------------------------------------#
---]]
 vim.api.nvim_set_keymap('v', '<', '<gv', kop)
 vim.api.nvim_set_keymap('v', '>', '>gv', kop)
 
