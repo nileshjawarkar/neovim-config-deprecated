@@ -1,0 +1,8 @@
+require("core.install")
+require("core.statusline")
+require("core.filetree")
+require("core.lsp")
+require("core.treesitter")
+require("core.telescope")
+require("core.completion")
+require("core.git")
