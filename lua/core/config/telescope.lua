@@ -3,15 +3,6 @@ local previewers = require('telescope.previewers')
 
 local kop = { noremap = true, silent = true };
 
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>;', '<cmd>lua require("telescope.builtin").find_files()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>/', '<cmd>lua require("telescope.builtin").current_buffer_fuzzy_find()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").live_grep()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>.', '<cmd>lua require("telescope.builtin").live_grep()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>fl', '<cmd>lua require("telescope.builtin").buffers()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>,', '<cmd>lua require("telescope.builtin").buffers()<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>lua require("telescope.builtin").help_tags()<cr>', kop)
 
 require('telescope').setup {
 	defaults = {
