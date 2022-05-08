@@ -1,5 +1,13 @@
 vim.cmd [[packadd packer.nvim]]
 
+require('packer').init {
+	display = {
+		open_fn = function()
+			return require("packer.util").float { border = "single" }
+		end,
+	},
+}
+
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -26,7 +34,9 @@ return require('packer').startup(function(use)
 	use {'hrsh7th/nvim-cmp'}
 	use {'saadparwaiz1/cmp_luasnip'}
 	use {'L3MON4D3/LuaSnip'}
-	-- use {'rafamadriz/friendly-snippets'}
+	use {'hrsh7th/cmp-buffer'}
+	use {'hrsh7th/cmp-path'}
+	use {'hrsh7th/cmp-cmdline'}
 	use {'neovim/nvim-lspconfig',
 		requires = {
 			{'williamboman/nvim-lsp-installer'},

@@ -1,7 +1,7 @@
 local req_servers = {
-	'sumneko_lua', 'pyright', 'rust_analyzer', 'tsserver',
-	'clangd', 'cssls', 'dockerls', 'html', 'bashls',
-	'jsonls', 'lemminx', 'yamlls'
+	'pyright', 'clangd',
+	'tsserver', 'cssls', 'dockerls', 'html', 'bashls',
+	'jsonls', 'lemminx', 'yamlls', 'sumneko_lua'
 }
 
 require("nvim-lsp-installer").setup({
@@ -29,52 +29,64 @@ local opts = {
 local ng_leaderkey_map = {
 	l = {
 		name = "Lsp",
-		e = {"<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic - Open float"},
-		q = {"<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostic - Set local list"},
-		p = {"<cmd>lua vim.diagnostic.goto_prev()<CR>", "Diagnostic - Previous"},
-		n = {"<cmd>lua vim.diagnostic.goto_next()<CR>", "Diagnostic - Next"},
+		e = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic - Open float" },
+		q = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "Diagnostic - Set local list" },
+		p = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Diagnostic - Previous" },
+		n = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Diagnostic - Next" },
 	}
 }
-wk.register( ng_leaderkey_map, opts )
+wk.register(ng_leaderkey_map, opts)
 
 local nb_leaderkey_map = {
 	l = {
 		name = "Lsp",
-		A = {"<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add workspace folder"},
-		R = {"<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove workspace folder"},
-		L = {"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List workspace folders"},
-		k = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help"},
-		d = {"<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition"},
-		r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},
-		a = {"<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
-		f = {"<cmd>lua vim.lsp.buf.formatting()<CR>", "Format code"},
+		A = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add workspace folder" },
+		R = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove workspace folder" },
+		L = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List workspace folders" },
+		k = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
+		d = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition" },
+		r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+		a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code action" },
+		f = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format code" },
 	}
 }
 
 local nb_key_map = {
-	['gr'] = {"<cmd>lua vim.lsp.buf.references()<CR>", "References"},
-	['gD'] = {"<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration"},
-	['gd'] = {"<cmd>lua vim.lsp.buf.definition()<CR>", "Definition"},
-	['gi'] = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation"},
-	['K'] = {"<cmd>lua vim.lsp.buf.hover()<CR>", "Hover"},
+	['gr'] = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
+	['gD'] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+	['gd'] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+	['gi'] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation" },
+	['K'] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
 }
 
 local setboption = vim.api.nvim_buf_set_option
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	setboption(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 	opts.buffer = bufnr;
-	wk.register( nb_leaderkey_map, opts )
-
+	wk.register(nb_leaderkey_map, opts)
 	opts.prefix = nil
-	wk.register( nb_key_map, opts )
+	wk.register(nb_key_map, opts)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-for _, lsp in pairs(req_servers) do
-	require('lspconfig')[lsp].setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
+local lsp_config = require('lspconfig')
+local setup_opts = {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+for _, lsp_server in pairs(req_servers) do
+	--[[
+	if lsp_server == "sumneko_lua" then
+		setup_opts.Lua = {
+			diagnostics = {
+				globals = {
+					"vim",
+				}
+			}
+		}
+	end
+	]]
+	lsp_config[lsp_server].setup(setup_opts)
 end
