@@ -6,16 +6,10 @@ vim.api.nvim_set_keymap('n', ',r', ':luafile $MYVIMRC<cr>', {})
 -- edit nvim configuration file
 vim.api.nvim_set_keymap('n', ',e', ':vsp $MYVIMRC<cr>', {})
 
-
-vim.api.nvim_set_keymap('n', '<M-_>', ':vertical resize +3<cr>', kop)
-vim.api.nvim_set_keymap('n', '<M-+>', ':vertical resize -3<cr>', kop)
-
-vim.api.nvim_set_keymap('n', '<c-s>', ':w<cr>', {})
-vim.api.nvim_set_keymap('n', '<c-q>', ':bd<cr>', {})
-
+vim.api.nvim_set_keymap('n', '<M-+>', ':vertical resize +3<cr>', kop)
+vim.api.nvim_set_keymap('n', '<M-_>', ':vertical resize -3<cr>', kop)
 vim.api.nvim_set_keymap('v', '<', '<gv', kop)
 vim.api.nvim_set_keymap('v', '>', '>gv', kop)
-
 
 --[[
 #------------------------------------------------------------------------------#

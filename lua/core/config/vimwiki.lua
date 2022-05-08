@@ -21,4 +21,3 @@ local keymapping = {
 }
 
 wk.register( keymapping, opts)
-
