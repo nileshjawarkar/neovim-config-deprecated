@@ -10,6 +10,6 @@ cmd([[
 ]])
 
 cmd('colorscheme onedark')
-cmd('set guifont=Monospace:h12')
+cmd('set guifont=Monospace:h14:b:cANCI')
 
 
