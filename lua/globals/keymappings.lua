@@ -37,11 +37,5 @@ vim.api.nvim_set_keymap('t', '<c-j>', [[<c-\><c-n><c-w>h]], {})
 vim.api.nvim_set_keymap('t', '<c-j>', [[<c-\><c-n><c-w>l]], {})
 
 
---[[
-#------------------------------------------------------------------------------#
-#                                     OTHER                                    #
-#------------------------------------------------------------------------------#
---]]
-
 -- [ <F6> ] to go enable spell checker
 vim.api.nvim_set_keymap('', '<F6>', ':setlocal spell! spelllang=en_us<cr>', kop)

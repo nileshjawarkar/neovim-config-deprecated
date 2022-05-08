@@ -78,6 +78,7 @@ local n_mappings = {
 		g = {"<cmd>Telescope live_grep<cr>", "Find in files"},
 		l = {"<cmd>Telescope buffers<cr>", "List buffers"},
 		t = {"<cmd>NvimTreeFindFile<CR>", "Find in tree"},
+		c = {'<cmd>let @+ = expand("%:p")<CR>', "Copy file path"},
 	},
 
 	t = {
