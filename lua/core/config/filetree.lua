@@ -1,6 +1,7 @@
 local kop = { noremap = false, silent = true }
-vim.api.nvim_set_keymap('n', '<Leader>t', ':NvimTreeToggle<CR>', kop)
-vim.api.nvim_set_keymap('n', '<Leader>f', ':NvimTreeFindFile<CR>', kop)
+vim.api.nvim_set_keymap('n', '<Leader>tt', ':NvimTreeToggle<CR>', kop)
+vim.api.nvim_set_keymap('n', '<Leader><CR>', ':NvimTreeFindFile<CR>', kop)
+vim.api.nvim_set_keymap('n', '<Leader>ft', ':NvimTreeFindFile<CR>', kop)
 
 vim.g.nvim_tree_show_icons = {
 	git = 0,

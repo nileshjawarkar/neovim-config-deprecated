@@ -11,8 +11,8 @@ vim.api.nvim_set_keymap('n', '<leader>wl', '<c-w>l', {})
 vim.api.nvim_set_keymap('n', '<leader>wj', '<c-w>j', {})
 vim.api.nvim_set_keymap('n', '<leader>wk', '<c-w>k', {})
 
-vim.api.nvim_set_keymap('n', '<leader>wp', ':vertical resize +3<cr>', kop)
-vim.api.nvim_set_keymap('n', '<leader>wm', ':vertical resize -3<cr>', kop)
+vim.api.nvim_set_keymap('n', '<M-_>', ':vertical resize +3<cr>', kop)
+vim.api.nvim_set_keymap('n', '<M-+>', ':vertical resize -3<cr>', kop)
 
 vim.api.nvim_set_keymap('n', '<c-s>', ':w<cr>', {})
 vim.api.nvim_set_keymap('n', '<c-q>', ':bd<cr>', {})
