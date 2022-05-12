@@ -105,18 +105,18 @@ wo.scrolloff=15
 bo.shiftwidth = 4
 
 
-local cmd = vim.cmd
-cmd([[
-	let g:clipboard = {
-	\   'name': 'myClipboard',
-	\   'copy': {
-	\      '+': {lines, regtype -> extend(g:, {'xyzclipbord': [lines, regtype]}) },
-	\      '*': {lines, regtype -> extend(g:, {'xyzclipbord': [lines, regtype]}) },
-	\    },
-	\   'paste': {
-	\      '+': {-> get(g:, 'xyzclipbord', [])},
-	\      '*': {-> get(g:, 'xyzclipbord', [])},
-	\   },
-	\ }
-]])
+-- local cmd = vim.cmd
+-- cmd([[
+-- 	let g:clipboard = {
+-- 	\   'name': 'myClipboard',
+-- 	\   'copy': {
+-- 	\      '+': {lines, regtype -> extend(g:, {'xyzclipbord': [lines, regtype]}) },
+-- 	\      '*': {lines, regtype -> extend(g:, {'xyzclipbord': [lines, regtype]}) },
+-- 	\    },
+-- 	\   'paste': {
+-- 	\      '+': {-> get(g:, 'xyzclipbord', [])},
+-- 	\      '*': {-> get(g:, 'xyzclipbord', [])},
+-- 	\   },
+-- 	\ }
+-- ]])
 

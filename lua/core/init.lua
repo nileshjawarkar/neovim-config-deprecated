@@ -1,4 +1,5 @@
 require("core.install")
+require("core.options")
 require("core.config.theme")
 require("core.config.statusline")
 require("core.config.filetree")

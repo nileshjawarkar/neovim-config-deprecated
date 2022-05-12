@@ -16,15 +16,7 @@ require("nvim-lsp-installer").setup({
 	}
 })
 
-local wk = require("which-key")
-local opts = {
-	mode = "n", -- NORMAL mode
-	prefix = "<leader>",
-	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-	silent = true, -- use `silent` when creating keymaps
-	noremap = true, -- use `noremap` when creating keymaps
-	nowait = false, -- use `nowait` when creating keymaps
-}
+local util = require("core.util")
 
 local ng_leaderkey_map = {
 	l = {
@@ -35,7 +27,7 @@ local ng_leaderkey_map = {
 		n = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Diagnostic - Next" },
 	}
 }
-wk.register(ng_leaderkey_map, opts)
+util.map_nkey("<leader>", ng_leaderkey_map)
 
 local nb_leaderkey_map = {
 	l = {
@@ -62,10 +54,8 @@ local nb_key_map = {
 local setboption = vim.api.nvim_buf_set_option
 local on_attach = function(_, bufnr)
 	setboption(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	opts.buffer = bufnr;
-	wk.register(nb_leaderkey_map, opts)
-	opts.prefix = nil
-	wk.register(nb_key_map, opts)
+	util.map_key("<leader>", "n", bufnr, nb_leaderkey_map)
+	util.map_key(nil, "n", bufnr, nb_key_map)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
