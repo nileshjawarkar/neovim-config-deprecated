@@ -1,8 +1,4 @@
 local actions = require('telescope.actions')
-local previewers = require('telescope.previewers')
-
-local kop = { noremap = true, silent = true };
-
 
 require('telescope').setup {
 	defaults = {

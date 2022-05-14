@@ -49,17 +49,10 @@ local function t(str)
 end
 
 local global_tkey_map = {
-	w = {
-		name = "Terminal",
-		e = {t("<c-\\><c-n>"), "Normal mode"},
-		h = {t("<c-\\><c-n><c-w>h"), "Move right"},
-		l = {t("<c-\\><c-n><c-w>l"), "Move left"},
-		j = {t("<c-\\><c-n><c-w>j"), "Move down"},
-		k = {t("<c-\\><c-n><c-w>k"), "Move up"},
-	},
+		['<M-\\>'] = {t("<c-\\><c-n>"), "Normal mode"},
 }
 
-util.map_tkey("<leader>", global_tkey_map)
+util.map_tkey(nil, global_tkey_map)
 
 local global_nkey_map = {
 	["<M-+>"] = {"<cmd>vertical resize +10<cr>", "Increase column size"},

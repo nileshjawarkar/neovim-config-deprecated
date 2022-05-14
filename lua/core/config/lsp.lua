@@ -67,16 +67,5 @@ local setup_opts = {
 }
 
 for _, lsp_server in pairs(req_servers) do
-	--[[
-	if lsp_server == "sumneko_lua" then
-		setup_opts.Lua = {
-			diagnostics = {
-				globals = {
-					"vim",
-				}
-			}
-		}
-	end
-	]]
 	lsp_config[lsp_server].setup(setup_opts)
 end
