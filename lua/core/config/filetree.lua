@@ -1,8 +1,19 @@
 vim.g.nvim_tree_show_icons = {
 	git = 0,
-	folders = 0,
+	folders = 1,
 	files = 0,
 	folder_arrows = 0,
+}
+
+vim.g.nvim_tree_icons = {
+	folder = {
+		default =  "+-",
+		open =  "|-",
+		empty =  "+-",
+		empty_open =  "|=",
+		symlink =  "+~",
+		symlink_open =  "|~",
+	}
 }
 
 require 'nvim-tree'.setup {
