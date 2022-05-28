@@ -1,21 +1,3 @@
-vim.g.nvim_tree_show_icons = {
-	git = 0,
-	folders = 1,
-	files = 0,
-	folder_arrows = 0,
-}
-
-vim.g.nvim_tree_icons = {
-	folder = {
-		default =  "+-",
-		open =  "|-",
-		empty =  "+-",
-		empty_open =  "|=",
-		symlink =  "+~",
-		symlink_open =  "|~",
-	}
-}
-
 require 'nvim-tree'.setup {
 	auto_reload_on_write = true,
 	disable_netrw = false,
@@ -29,7 +11,7 @@ require 'nvim-tree'.setup {
 	sort_by = "name",
 	update_cwd = false,
 	view = {
-		width = 35,
+		width = 40,
 		height = 30,
 		hide_root_folder = false,
 		side = "left",
@@ -55,6 +37,22 @@ require 'nvim-tree'.setup {
 		},
 		icons = {
 			webdev_colors = false,
+			show = {
+				git = false,
+				folder = true,
+				file = false,
+				folder_arrow = false,
+			},
+      		glyphs = {
+				folder = {
+					default =  "+-",
+					open =  "|-",
+					empty =  "+-",
+					empty_open =  "|-",
+					symlink =  "+~",
+					symlink_open =  "|~",
+				}
+			}
 		},
 	},
 	hijack_directories = {
